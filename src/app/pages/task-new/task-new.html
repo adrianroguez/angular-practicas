@@ -1,0 +1,31 @@
+<section class="card">
+    <h2>Nueva tarea</h2>
+
+    <form [formGroup]="form" (ngSubmit)="save()">
+        <label>
+            Título
+            <input class="input" formControlName="titulo" />
+        </label>
+
+        @if (form.controls.titulo.touched && form.controls.titulo.invalid) {
+        <div class="error">
+            El título es obligatorio y debe tener al menos 3 caracteres.
+        </div>
+        }
+
+        <label>
+            Descripción (opcional)
+            <input class="input" formControlName="descripcion" />
+        </label>
+
+        <label class="check">
+            <input type="checkbox" formControlName="completada" />
+            Completada
+        </label>
+
+        <div class="row">
+            <button class="btn btn-primary" type="submit">Guardar</button>
+            <button class="btn btn-ghost" type="button" (click)="cancel()">Cancelar</button>
+        </div>
+    </form>
+</section>

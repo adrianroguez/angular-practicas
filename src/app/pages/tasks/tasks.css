@@ -1,0 +1,19 @@
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+}
+
+.muted {
+    color: #666;
+    font-size: .95rem;
+    margin-top: 4px;
+}
