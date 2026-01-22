@@ -1,15 +1,25 @@
 <section class="card">
     <h2>Lista de tareas</h2>
 
-    @if (tasksService.list().length === 0) {
+    @if (loading) {
+    <p>Cargando...</p>
+    }
+
+    @if (errorMsg) {
+    <p class="error">{{ errorMsg }}</p>
+    }
+
+    @if (!loading && !errorMsg && tasks.length === 0) {
     <p>No hay tareas todavía.</p>
-    } @else {
+    } @else if (!loading && !errorMsg) {
     <ul class="list">
-        @for (t of tasksService.list(); track t.id) {
+        @for (t of tasks; track t.id) {
         <li class="item">
             <div>
                 <strong>{{ t.titulo }}</strong>
-                @if (t.descripcion) { <div class="muted">{{ t.descripcion }}</div> }
+                @if (t.descripcion) {
+                <div class="muted">{{ t.descripcion }}</div>
+                }
             </div>
 
             <button class="btn btn-ghost" (click)="remove(t.id)">Eliminar</button>

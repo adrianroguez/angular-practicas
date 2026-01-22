@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TasksService } from '../../services/tasks';
+import { TasksApiService } from '../../services/tasks-api.service';
 
 @Component({
   selector: 'app-task-new',
@@ -12,7 +12,7 @@ import { TasksService } from '../../services/tasks';
 })
 export class TaskNew {
   private fb = inject(FormBuilder);
-  private tasks = inject(TasksService);
+  private tasks = inject(TasksApiService);
   private router = inject(Router);
 
   form = this.fb.nonNullable.group({
@@ -27,8 +27,9 @@ export class TaskNew {
       this.form.markAllAsTouched();
       return;
     }
-    this.tasks.add(this.form.getRawValue());
-    this.router.navigateByUrl('/tareas');
+    this.tasks.create(this.form.getRawValue()).subscribe(() => {
+      this.router.navigateByUrl('/tareas');
+    });
   }
 
   cancel() {

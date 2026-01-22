@@ -337,3 +337,23 @@ Ahora te toca a ti mejorar la aplicación:
 4.  **Página "Acerca de":** Crea una nueva página (`AboutComponent`) y añádela al router y al navbar.
 
 ¡Suerte!
+
+## Práctica 02: Conexión con API REST
+
+Objetivo: Reemplazar el almacenamiento en memoria por peticiones HTTP a una API REST (CRUD completo).
+
+### Requisitos:
+*   API REST corriendo en `http://localhost:8080/api/v1/tasks`.
+*   Endpoints:
+    *   `GET /tasks`: Listar tareas.
+    *   `GET /tasks/{id}`: Obtener tarea.
+    *   `POST /tasks`: Crear tarea.
+    *   `PUT /tasks/{id}`: Actualizar tarea.
+    *   `DELETE /tasks/{id}`: Eliminar tarea.
+
+### Cambios principales:
+1.  Configuración de `HttpClient` en `app.config.ts`.
+2.  Configuración de proxy para evitar CORS en `proxy.conf.json`.
+3.  Creación de servicio `TasksApiService` para comunicación con API.
+4.  Adaptación de modelos y creación de mappers (`task-mapper.ts`).
+5.  Refactorización de componentes `Tasks` y `TaskNew` para usar observables y manejar estados de carga/error.
