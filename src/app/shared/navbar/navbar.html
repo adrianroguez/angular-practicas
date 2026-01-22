@@ -2,4 +2,8 @@
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
     <a routerLink="/tareas" routerLinkActive="active">Tareas</a>
     <a routerLink="/tareas/nueva" routerLinkActive="active">Nueva tarea</a>
+
+    @if (auth.isLoggedIn()) {
+    <button class="btn btn-ghost" (click)="logout()">Logout</button>
+    }
 </nav>
